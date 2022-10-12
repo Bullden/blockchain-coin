@@ -1,0 +1,51 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.circle {
+  border-radius: 50%;
+  background: rgba(39, 33, 52, 0.08);
+  box-shadow: inset 0px 25px 21px rgba(109, 68, 144, 0.3), inset 0px 1px 1px rgba(0, 0, 0, 0.25),
+    inset 0px 1px 6px rgba(154, 146, 210, 0.3);
+  backdrop-filter: blur(13px);
+  width: 106px;
+  height: 106px;
+}
+
+.hex:before {
+  border-radius: 10px;
+  content: " ";
+  width: 4px;
+  height: 0;
+  border-bottom: 32px solid rgb(44 30 59);
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  position: absolute;
+  top: -26px;
+}
+
+.hex {
+  border-radius: 12px;
+  margin-top: 30px;
+  width: 104px;
+  height: 60px;
+  background: rgb(44 30 59);
+  position: relative;
+  border-radius: 10px;
+}
+
+.hex:after {
+  border-radius: 12px;
+  content: "";
+  width: 4px;
+  height: 0;
+  position: absolute;
+  bottom: -26px;
+  border-top: 32px solid rgb(44 30 59);
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+  border-radius: 10px;
+}
