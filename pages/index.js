@@ -25,26 +25,36 @@ export default function Home() {
     coinRef.current.slickGoTo(currCoin);
   }, [currBlockchain, currCoin]);
 
+  const setCoinAndBlockchain = (resCoin, idx) => {
+    COINS.forEach((item, index) => (item === resCoin ? setCurrCoin(index) : null));
+    setCurrBlockChain(BLOCKCHAINS.length - idx);
+    blockchainRef.current.slickPause();
+    coinRef.current.slickPause();
+  };
+  const setBlockchain = (idx) => {
+    setCurrBlockChain(BLOCKCHAINS.length - idx);
+    setCurrCoin("");
+    blockchainRef.current.slickPause();
+    coinRef.current.slickPlay();
+  };
+  const setDefault = () => {
+    setCurrCoin("");
+    setCurrBlockChain("");
+    coinRef.current.slickPlay();
+    blockchainRef.current.slickPlay();
+  };
+
   const onSubmit = () => {
     for (let i = 0; i < BLOCKCHAINS.length; i++) {
       const resCoin = BLOCKCHAINS[i].coins.find((coin) => coin.toLowerCase() === state.toLowerCase());
       if (resCoin) {
-        COINS.forEach((item, index) => (item === resCoin ? setCurrCoin(index) : null));
-        setCurrBlockChain(BLOCKCHAINS.length - i);
-        blockchainRef.current.slickPause();
-        coinRef.current.slickPause();
+        setCoinAndBlockchain(resCoin, i);
         return;
       } else if (BLOCKCHAINS[i].name.toLowerCase() === state.toLowerCase()) {
-        setCurrBlockChain(BLOCKCHAINS.length - i);
-        setCurrCoin("");
-        blockchainRef.current.slickPause();
-        coinRef.current.slickPlay();
+        setBlockchain(i);
         return;
       } else {
-        setCurrCoin("");
-        setCurrBlockChain("");
-        coinRef.current.slickPlay();
-        blockchainRef.current.slickPlay();
+        setDefault();
       }
     }
   };
