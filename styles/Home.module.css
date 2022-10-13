@@ -7,7 +7,6 @@
   background-color: #120e19;
   height: 100vh;
   position: relative;
-  mix-blend-mode: hard-light;
 }
 
 .container:after,
