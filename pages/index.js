@@ -6,19 +6,19 @@ import ListComponent from "../components/ListComponent";
 import Image from "next/image";
 
 export default function Home() {
-  const [state, setState] = useState("");
+  const [inputState, setInputState] = useState("");
   const [currBlockchain, setCurrBlockChain] = useState("");
   const [currCoin, setCurrCoin] = useState("");
 
   useEffect(() => {
-    if (state) {
+    if (inputState) {
       coinRef.current.slickPause();
       blockchainRef.current.slickPause();
     } else {
       coinRef.current.slickPlay();
       blockchainRef.current.slickPlay();
     }
-  }, [state]);
+  }, [inputState]);
 
   useEffect(() => {
     blockchainRef.current.slickGoTo(currBlockchain);
@@ -46,11 +46,11 @@ export default function Home() {
 
   const onSubmit = () => {
     for (let i = 0; i < BLOCKCHAINS.length; i++) {
-      const resCoin = BLOCKCHAINS[i].coins.find((coin) => coin.toLowerCase() === state.toLowerCase());
+      const resCoin = BLOCKCHAINS[i].coins.find((coin) => coin.toLowerCase() === inputState.toLowerCase());
       if (resCoin) {
         setCoinAndBlockchain(resCoin, i);
         return;
-      } else if (BLOCKCHAINS[i].name.toLowerCase() === state.toLowerCase()) {
+      } else if (BLOCKCHAINS[i].name.toLowerCase() === inputState.toLowerCase()) {
         setBlockchain(i);
         return;
       } else {
@@ -78,7 +78,12 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.inputWrap}>
-        <input value={state} type='text' placeholder='Chains and Coins' onChange={(e) => setState(e.target.value)} />
+        <input
+          value={inputState}
+          type='text'
+          placeholder='Chains and Coins'
+          onChange={(e) => setInputState(e.target.value)}
+        />
         <div className={styles.searchButton} onClick={onSubmit}>
           <Image src={"/static/images/search.svg"} width='100%' height='100%' />
         </div>
