@@ -1,7 +1,8 @@
 import styles from "../styles/ListComponent.module.css";
 import clsx from "clsx";
+import Image from "next/image";
 
-export default function ListComponent({ item, name }) {
+export default function ListComponent({ image, name }) {
   return (
     <div
       className={clsx(styles.item, {
@@ -9,7 +10,7 @@ export default function ListComponent({ item, name }) {
         [styles.circle]: name === "coin",
       })}
     >
-      {item}
+      <Image className={styles.image} src={`/static/images/${image}`} width='65' height='65' />
     </div>
   );
 }

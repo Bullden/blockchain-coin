@@ -6,6 +6,36 @@
   flex-direction: column;
   background-color: #120e19;
   height: 100vh;
+  position: relative;
+  mix-blend-mode: hard-light;
+}
+
+.container:after,
+.container:before {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  content: " ";
+  opacity: 1;
+  z-index: 100;
+}
+.container:before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 30%, transparent 95%);
+}
+.container:after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 1) 30%, transparent 95%);
+}
+
+.naming {
+  font-family: "Obvia Expanded";
+  font-style: normal;
+  text-align: center;
+  color: #675f78;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 
 .inputWrap {
@@ -46,7 +76,7 @@
 .list {
   color: white;
   display: flex;
-  min-height: 150px;
+  min-height: 120px;
   opacity: 0.5;
   filter: alpha(opacity=50);
   font-size: 20px;

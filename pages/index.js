@@ -21,18 +21,20 @@ export default function Home() {
   }, [state]);
 
   useEffect(() => {
+    console.log("currBlockchain:", currBlockchain, "currCoin:", currCoin);
+    console.log("BLOCKCHAINS", BLOCKCHAINS);
     blockchainRef.current.slickGoTo(currBlockchain);
     coinRef.current.slickGoTo(currCoin);
   }, [currBlockchain, currCoin]);
 
   const setCoinAndBlockchain = (resCoin, idx) => {
-    COINS.forEach((item, index) => (item === resCoin ? setCurrCoin(index) : null));
-    setCurrBlockChain(BLOCKCHAINS.length - idx);
+    COINS.forEach((item, index) => (item.name === resCoin ? setCurrCoin(index) : null));
+    setCurrBlockChain(BLOCKCHAINS.length - idx - 1);
     blockchainRef.current.slickPause();
     coinRef.current.slickPause();
   };
   const setBlockchain = (idx) => {
-    setCurrBlockChain(BLOCKCHAINS.length - idx);
+    setCurrBlockChain(BLOCKCHAINS.length - idx - 1);
     setCurrCoin("");
     blockchainRef.current.slickPause();
     coinRef.current.slickPlay();
@@ -61,7 +63,7 @@ export default function Home() {
 
   const settings = {
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4.5,
     slidesToScroll: 1,
     centerMode: true,
     focusOnSelect: true,
@@ -85,15 +87,17 @@ export default function Home() {
       </div>
       <div className={styles.listsWrap}>
         <Slider {...settings} rtl className={styles.list} ref={blockchainRef}>
-          {BLOCKCHAINS.map((item, index) => (
-            <ListComponent key={index} item={item.name} name='blockchain' />
+          {BLOCKCHAINS.map((item) => (
+            <ListComponent key={item.id} image={item.image} name='blockchain' />
           ))}
         </Slider>
+        <p className={styles.naming}>Blockchains</p>
         <Slider {...settings} className={styles.list} ref={coinRef}>
-          {COINS.map((item, index) => (
-            <ListComponent key={index} item={item} name='coin' />
+          {COINS.map((item) => (
+            <ListComponent key={item.id} image={item.image} name='coin' />
           ))}
         </Slider>
+        <p className={styles.naming}>Coins</p>
       </div>
     </div>
   );

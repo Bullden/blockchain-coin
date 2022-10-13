@@ -4,6 +4,9 @@
   justify-content: center;
   position: relative;
 }
+.image {
+  z-index: 100;
+}
 
 .circle {
   border-radius: 50%;
