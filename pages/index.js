@@ -21,8 +21,6 @@ export default function Home() {
   }, [state]);
 
   useEffect(() => {
-    console.log("currBlockchain:", currBlockchain, "currCoin:", currCoin);
-    console.log("BLOCKCHAINS", BLOCKCHAINS);
     blockchainRef.current.slickGoTo(currBlockchain);
     coinRef.current.slickGoTo(currCoin);
   }, [currBlockchain, currCoin]);
