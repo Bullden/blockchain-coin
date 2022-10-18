@@ -25,19 +25,9 @@ a {
 }
 
 .slick-list {
-  padding: 0 100px !important;
+  padding: 0 92px !important;
 }
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }

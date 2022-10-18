@@ -1,9 +1,8 @@
 import styles from "../styles/Home.module.css";
 import { BLOCKCHAINS, COINS } from "../sources/coinSource";
 import { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-import ListComponent from "../components/ListComponent";
-import Image from "next/image";
+import SliderComponent from "../components/SliderComponent/SliderComponent";
+import InputComponent from "../components/InputComponent/InputComponent";
 
 export default function Home() {
   const [inputState, setInputState] = useState("");
@@ -59,48 +58,25 @@ export default function Home() {
     }
   };
 
-  const settings = {
-    infinite: true,
-    slidesToShow: 4.5,
-    slidesToScroll: 1,
-    centerMode: true,
-    focusOnSelect: true,
-    speed: 2000,
-    arrows: false,
-    autoplaySpeed: 2000,
-    autoplay: true,
-    pauseOnHover: false,
-  };
+  const nameOfCoin = (coinIndex) => (coinIndex ? COINS[coinIndex].name : "Coins");
+  const nameOfBlockchain = (blockchainIndex) =>
+    blockchainIndex ? BLOCKCHAINS[BLOCKCHAINS.length - blockchainIndex - 1].name : "Blockchains";
 
   const coinRef = useRef();
   const blockchainRef = useRef();
 
   return (
     <div className={styles.container}>
-      <div className={styles.inputWrap}>
-        <input
-          value={inputState}
-          type='text'
-          placeholder='Chains and Coins'
-          onChange={(e) => setInputState(e.target.value)}
-        />
-        <div className={styles.searchButton} onClick={onSubmit}>
-          <Image src={"/static/images/search.svg"} width='100%' height='100%' />
-        </div>
-      </div>
+      <InputComponent value={inputState} setValue={setInputState} onSubmit={onSubmit} />
       <div className={styles.listsWrap}>
-        <Slider {...settings} rtl className={styles.list} ref={blockchainRef}>
-          {BLOCKCHAINS.map((item) => (
-            <ListComponent key={item.id} image={item.image} name='blockchain' />
-          ))}
-        </Slider>
-        <p className={styles.naming}>Blockchains</p>
-        <Slider {...settings} className={styles.list} ref={coinRef}>
-          {COINS.map((item) => (
-            <ListComponent key={item.id} image={item.image} name='coin' />
-          ))}
-        </Slider>
-        <p className={styles.naming}>Coins</p>
+        <SliderComponent
+          rtl
+          currentArray={BLOCKCHAINS}
+          currentRef={blockchainRef}
+          name='blockchain'
+          value={nameOfBlockchain(currBlockchain)}
+        />
+        <SliderComponent currentArray={COINS} currentRef={coinRef} name='coin' value={nameOfCoin(currCoin)} />
       </div>
     </div>
   );

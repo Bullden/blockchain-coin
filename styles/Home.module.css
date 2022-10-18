@@ -27,60 +27,7 @@
   background: linear-gradient(270deg, rgba(0, 0, 0, 1) 30%, transparent 95%);
 }
 
-.naming {
-  font-family: "Obvia Expanded";
-  font-style: normal;
-  text-align: center;
-  color: #675f78;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-.inputWrap {
-  position: relative;
-  height: 42px;
-  width: 218px;
-  border: 1px solid #413756;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0px 8px;
-}
-
-.inputWrap input {
-  background-color: transparent;
-  border: none;
-  color: #8d879a !important;
-  font-size: 14px;
-  width: 65%;
-}
-
-.inputWrap input:focus-visible {
-  border: none;
-  outline: none;
-}
-
-.searchButton {
-  width: 25px;
-  height: 25px;
-}
-
 .listsWrap {
   width: 100%;
   padding-top: 40px;
-}
-
-.list {
-  color: white;
-  display: flex;
-  min-height: 120px;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-  font-size: 20px;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  border-radius: 9px;
 }

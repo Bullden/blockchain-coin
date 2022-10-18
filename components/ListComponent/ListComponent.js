@@ -1,4 +1,4 @@
-import styles from "../styles/ListComponent.module.css";
+import styles from "./ListComponent.module.css";
 import clsx from "clsx";
 import Image from "next/image";
 

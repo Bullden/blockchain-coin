@@ -1,0 +1,29 @@
+.inputWrap {
+  position: relative;
+  height: 42px;
+  width: 218px;
+  border: 1px solid #413756;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 8px;
+}
+
+.inputWrap input {
+  background-color: transparent;
+  border: none;
+  color: #8d879a !important;
+  font-size: 14px;
+  width: 65%;
+}
+
+.inputWrap input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.searchButton {
+  width: 25px;
+  height: 25px;
+}
